@@ -1,0 +1,15 @@
+1) List all books
+https://example-data.draftbit.com/books
+
+2) Get a single book
+https://example-data.draftbit.com/books/1
+
+3) Search by an author
+https://example-data.draftbit.com/books?authors=Suzanne%20Collins
+
+4) Search by genres
+https://example-data.draftbit.com/books?genres=Fantasy,%20Fiction,%20Classics
+
+5) Search by rating
+
+6) Search by Title

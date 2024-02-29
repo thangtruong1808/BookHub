@@ -1,0 +1,27 @@
+div.mycard {    
+    /* transition: all 0.5s;     */
+    width: 15rem;
+    height: 20rem;    
+}
+
+div.mycard img{
+    width: 15rem;
+    height: 150px;
+    cursor: pointer;
+    /* object-fit: cover; */
+}
+/* div.mycard:hover {
+    transform: scale(1.1);
+} */
+
+div.accordion-body:hover{
+     /* background-color: yellow; */
+     color: green;
+     /* width: 100%; */
+    transition: transform 0.5s;
+    transform: scale(1.1);
+    font-weight: bolder;
+}
+div.Logo {
+    cursor: pointer;
+}
