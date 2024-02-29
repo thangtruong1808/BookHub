@@ -6,13 +6,9 @@ import useBooks from "../hooks/useBooks";
 import { Book } from "../services/book-service";
 
 const Home = () => {
-  // const displayBookID = (id: number) => {
-  //   console.log("bookID: " + id);
-  // };
   const { books, error, isLoading, setError, setBooks } = useBooks();
-  // const originalBooks = [...books];
   const [genresSelected, setSelectedFilterGenres] = useState<Book[]>([]);
-  // const [genresSelected, setSelectedFilterGenres] = useState([]);
+  const [toogleProfilePage, setToogleProfilePage] = useState(false);
   const [filteredItems, setFilteredItems] = useState(books);
 
   useEffect(() => {
@@ -41,6 +37,10 @@ const Home = () => {
       setFilteredItems([...books]);
     }
   };
+
+  // const HandleOnProfilePage = () => {
+  //   setToogleProfilePage(true)
+  // }
 
   return (
     <>

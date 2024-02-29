@@ -1,19 +1,26 @@
 div.mycard {    
     /* transition: all 0.5s;     */
-    width: 15rem;
-    height: 20rem;    
+    width: 14rem;
+    height: 22rem;    
 }
 
 div.mycard img{
-    width: 15rem;
+    width: 14rem;
     height: 150px;
     cursor: pointer;
     /* object-fit: cover; */
+}
+
+div img{
+    cursor: pointer;
 }
 /* div.mycard:hover {
     transform: scale(1.1);
 } */
 
+div.CustomCard{
+    font-size: medium;
+}
 div.accordion-body:hover{
      /* background-color: yellow; */
      color: green;

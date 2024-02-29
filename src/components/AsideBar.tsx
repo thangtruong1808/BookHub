@@ -64,12 +64,12 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
               aria-expanded="false"
               aria-controls="flush-collapseOne"
             >
-              Genres
+              <span className="fw-bold fs-5 text-center text-dark">Genres</span>
             </button>
           </h2>
           <div
             id="flush-collapseOne"
-            className="accordion-collapse collapse"
+            className="accordion-collapse collapse collapse show"
             data-bs-parent="#accordionFlushExample"
           >
             {allGenres.sort().map((item, index) => (

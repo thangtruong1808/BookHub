@@ -17,10 +17,13 @@ import AppContextProvider from "./components/context/bookContext.js";
 import "bootstrap/dist/css/bootstrap.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
+
 import Home from "./pages/Home.tsx";
 import ErrorPage from "./pages/ErrorPage.tsx";
 import BookDetail from "./pages/BookDetail.tsx";
 import BookCart from "./pages/BookCart.tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
+import { ThemeProvider } from "./hooks/useThemeContext.tsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -42,12 +45,15 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <AppContextProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/book/:ID" element={<BookDetail />} />
-          <Route path="/bookcart" element={<BookCart />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
+        <ThemeProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/book/:ID" element={<BookDetail />} />
+            <Route path="/bookcart" element={<BookCart />} />
+            <Route path="/myprofile" element={<ProfilePage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </ThemeProvider>
       </AppContextProvider>
     </BrowserRouter>
 
