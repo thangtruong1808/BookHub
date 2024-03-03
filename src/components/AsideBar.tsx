@@ -10,6 +10,7 @@ interface Props {
   onSelectedGenres: (genres: Book[]) => void;
 }
 const AsideBar = ({ onSelectedGenres }: Props) => {
+  const [classes, setClasses] = useState("");
   const [selectedFilterGenres, setSelectedFilterGenres] = useState<Book[]>([]);
   const [allGenres, setAllGenres] = useState([
     "Childrens",
@@ -30,6 +31,7 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
     "Novels",
     "Read For School",
   ]);
+
   const handleFilterGenre = (genre: Book) => {
     if (selectedFilterGenres.includes(genre)) {
       const filters = selectedFilterGenres.filter(
@@ -42,7 +44,6 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
   };
 
   const UpdateSelectedGenres = () => {
-    // alert("UpdateSelectedGenres: " + selectedFilterGenres);
     onSelectedGenres(selectedFilterGenres);
   };
   useEffect(() => {
@@ -82,8 +83,17 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
                   type="checkbox"
                   id={item}
                   onClick={() => handleFilterGenre(item)}
+                  // onChange={() => StyleGenreSelected(item)}
                 />
-                <label className="form0check-label ms-1" htmlFor={item}>
+                <label
+                  // className="form-check-label ms-1"
+                  className={
+                    selectedFilterGenres.includes(item)
+                      ? "form-check-label ms-1 fw-bold text-danger"
+                      : "form-check-label ms-1"
+                  }
+                  htmlFor={item}
+                >
                   {item}
                 </label>
               </div>

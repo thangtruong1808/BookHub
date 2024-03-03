@@ -11,10 +11,11 @@ import { Book } from "../services/book-service.js";
 import { useThemeContext } from "../hooks/useThemeContext.js";
 import ThemeSwitch from "./ThemeSwitch.js";
 
-// interface Props {
-//   onProfileClick: () => void;
-// }
-const NavBar = () => {
+interface Props {
+  // onProfileClick: () => void;
+  onSearch: (searchText: string) => void;
+}
+const NavBar = ({ onSearch }: Props) => {
   const navigate = useNavigate();
   const { darkMode, setDarkMode } = useThemeContext();
 
@@ -29,16 +30,26 @@ const NavBar = () => {
       : document.documentElement.removeAttribute("darkMode", "");
   }, [darkMode]);
 
+  // const ReturnHomePage = () => {
+  //   navigate("/");
+  //   window.location.reload();
+  // };
   return (
     <>
       <div className="container-fluid bg-success d-flex justify-content-between">
-        <div className="p-3 Logo" onClick={() => navigate("/")}>
-          {/* <img src={LogoBook} alt="Logo" width={"90px"} height={"60px"} /> */}
+        <div
+          className="p-3 Logo"
+          onClick={() => {
+            navigate("/");
+            window.location.reload();
+          }}
+        >
+          {/* <div className="p-3 Logo" onClick={ReturnHomePage}> */}
           <GiBookshelf style={{ width: "80px", height: "50px" }} />
           <span className="text-uppercase fw-bold fs-5">bookhub</span>
         </div>
         <div className="w-50 p-4">
-          <SearchBar />
+          <SearchBar onSearch={onSearch} />
         </div>
         <div className="p-3">
           <div className="hstack">
@@ -64,19 +75,19 @@ const NavBar = () => {
               // onClick={() => navigate("/myprofile")}
               // onClick={onProfileClick}
               data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasScrolling"
-              aria-controls="offcanvasScrolling"
+              data-bs-target="#offcanvasExample"
+              aria-controls="offcanvasExample"
             />
 
             <div
               className="offcanvas offcanvas-end"
-              data-bs-scroll="true"
-              data-bs-backdrop="false"
               tabIndex="-1"
-              id="offcanvasScrolling"
-              aria-labelledby="offcanvasScrollingLabel"
+              data-bs-scroll="true"
+              data-bs-backdrop="true"
+              id="offcanvasExample"
+              aria-labelledby="offcanvasExample"
             >
-              <div className="text-end">
+              <div className="text-end mt-2 me-2">
                 <button
                   type="button"
                   className="btn-close"
@@ -96,9 +107,9 @@ const NavBar = () => {
                       height={"100px"}
                       // onClick={() => navigate("/myprofile")}
                       // onClick={onProfileClick}
-                      data-bs-toggle="offcanvas"
-                      data-bs-target="#offcanvasScrolling"
-                      aria-controls="offcanvasScrolling"
+                      // data-bs-toggle="offcanvas"
+                      // data-bs-target="#offcanvasExample"
+                      // aria-controls="offcanvasExample"
                     />
                     <div className="vstack">
                       <span className="fw-bold fs-4 text-uppercase">

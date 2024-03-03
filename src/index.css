@@ -23,7 +23,7 @@ div.CustomCard{
 }
 div.accordion-body:hover{
      /* background-color: yellow; */
-     color: green;
+     color: red;
      /* width: 100%; */
     transition: transform 0.5s;
     transform: scale(1.1);

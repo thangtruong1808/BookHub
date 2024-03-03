@@ -6,7 +6,11 @@ import NavBar from "../components/NavBar";
 import AsideBar from "../components/AsideBar";
 import { AiFillStar } from "react-icons/ai";
 
-const BookDetail = () => {
+interface Props {
+  // onProfileClick: () => void;
+  onSearch: (searchText: string) => void;
+}
+const BookDetail = ({ onSearch }: Props) => {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState([]);
 
@@ -38,7 +42,7 @@ const BookDetail = () => {
 
   return (
     <>
-      <NavBar />
+      <NavBar onSearch={onSearch} />
       <div className="container mt-5">
         <div className="hstack">
           <div>

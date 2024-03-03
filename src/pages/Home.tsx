@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import NavBar from "../components/NavBar";
 import AsideBar from "../components/AsideBar";
 import BookList from "../components/BookGrid";
@@ -10,41 +10,77 @@ const Home = () => {
   const [genresSelected, setSelectedFilterGenres] = useState<Book[]>([]);
   const [toogleProfilePage, setToogleProfilePage] = useState(false);
   const [filteredItems, setFilteredItems] = useState(books);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
+    FilteredData(books, "");
     filterItems();
-    // console.log("genres: " + genresSelected);
-    // console.log("books.length: " + books.length);
-  }, [genresSelected, books]);
+    // setFilteredItems(books);
+  }, [books, genresSelected]);
+
+  // useEffect(() => {
+  //   filterItems();
+  // }, [genresSelected, books]);
 
   const HandleUpdateSelectedGenres = (genres: Book[]) => {
     setSelectedFilterGenres(genres);
   };
 
+  // Filtering Genre
   const filterItems = () => {
     if (genresSelected.length > 0) {
       const tempItems = genresSelected.map((genre) => {
-        // console.log("genre: " + genre);
-        // console.log("genre.genres: " + genre.genres);
-        // console.log("-------------------------------------");
-        const temp = books.filter((book) => book.genres.includes(genre));
+        const temp = filteredItems.filter((book) =>
+          book.genres.includes(genre)
+        );
         return temp;
       });
-      // console.log("tempItems: " + tempItems);
       setFilteredItems(tempItems.flat());
     } else {
-      // console.log("originalBooks: " + originalBooks.length);
       setFilteredItems([...books]);
     }
   };
 
-  // const HandleOnProfilePage = () => {
-  //   setToogleProfilePage(true)
-  // }
+  // ----------- Handle Input Filter -----------
+  const HandleOnSearchInPut = (searchText: string) => {
+    setQuery(searchText);
+    FilteredData(books, searchText);
+  };
 
+  // const filteredItemsInput = books.filter(
+  //   (book) => book.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
+  // );
+
+  const FilteredData = (books: Book[], searchText: string) => {
+    let filteredBooks = books;
+    // Filtering Input Items
+    if (searchText) {
+      const filteredItemsInput = books.filter(
+        (book) =>
+          book.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
+      );
+      filteredBooks = filteredItemsInput;
+      setFilteredItems(filteredBooks);
+    }
+    if (!searchText) {
+      console.log("Refresh");
+      setFilteredItems(books);
+    }
+    // Filtering Genre
+    // if (genresSelected.length > 0) {
+    //   const tempItems = genresSelected.map((genre) => {
+    //     const temp = filteredItems.filter((book) =>
+    //       book.genres.includes(genre)
+    //     );
+    //     return temp;
+    //   });
+    //   setFilteredItems(tempItems.flat());
+    // }
+  };
+  // FilteredData(books, query);
   return (
     <>
-      <NavBar />
+      <NavBar onSearch={HandleOnSearchInPut} />
       <div className="container-xxl mt-5">
         {/* <div className="container text-center fs-2 fw-bold text-danger mb-3">
           Total:{" "}
