@@ -89,76 +89,47 @@ const Home = () => {
     if (!searchText) {
       // setFilteredItems(books);
       setFilteredItems(filteredBooks);
-      console.log("filteredBooks.length: " + filteredBooks.length);
-      console.log("filteredItems.length: " + filteredItems.length);
+      // console.log("filteredBooks.length: " + filteredBooks.length);
+      // console.log("filteredItems.length: " + filteredItems.length);
     }
 
     // Applying Genre filter
     if (genresSelected.length > 0) {
       // console.log("genresSelected: " + genresSelected);
       // console.log("selectedFilters.length: " + genresSelected.length);
-      console.log("filteredItems.length 2: " + filteredItems.length);
+      // console.log("filteredItems.length 2: " + filteredItems.length);
       // console.log("---------------------------------------------------");
 
       let tempest: Book[] = [];
       genresSelected.forEach((e) => {
-        console.log("genresSelected: " + e);
-        console.log("filteredItems.length 3: " + filteredItems.length);
-        console.log("filteredBooks.length 3: " + filteredBooks.length);
+        // console.log("filteredItems.length 3: " + filteredItems.length);
+        // console.log("filteredBooks.length 3: " + filteredBooks.length);
 
         filteredBooks.filter((book) => {
           if (book.id) {
             // console.log("-----We success up to here-----");
             // console.log("book.genres: " + book.id + "-" + book.genres);
             if (book.genres.indexOf(e) !== -1) {
-              console.log("you are here 2");
-              // in case has more than 1 checkbox
-              if (tempest.length <= 0) {
+              // console.log("you are here 2");
+              // only 1 checkbox will add the book contained it's genre
+
+              if (!tempest.includes(book.id)) {
                 tempest.push(book);
-              } else {
-                // only 1 checkbox will add the book contained it's genre
-                console.log("----- You added the book: " + book.id);
-                tempest.forEach((el) => {
-                  if (book.genres !== el.genres) {
-                    tempest.push(book);
-                    console.log("----- You added the book: " + book.id);
-                  }
-                });
+                // console.log("----- You added the book: " + book.id);
               }
-              // if (!tempest.includes(book)) {
-              //   console.log("you are here 2");
-              //   console.log("book.genres: " + book.id + "-" + book.genres);
-              //   tempest.push(book);
-              // } else {
-              //   tempest.push(book);
-              //   console.log("you are here 3");
-              //   console.log("book.genres: " + book.id + "-" + book.genres);
-              // }
-            } else {
-              // console.log("-------- NO NO NO --------");
             }
           }
         });
       });
-      // console.log("selectedFilters.length: " + genresSelected.length);
-      // let tempItems = genresSelected.map((genre) => {
-      //   let temp = filteredItems.filter(({ id }) => id === genre.id);
-      //   return temp;
-      // });
-      // setFilteredItems(tempItems.flat());
-      // tempest.forEach((e) => console.log(e));
-      setFilteredItems(tempest);
-    } else {
-      // console.log("ALL UNCHECKED: ");
-      // if (filteredItems.length > 0) {
-      //   setFilteredItems(filteredItems);
-      // } else {
-      //   setFilteredItems(books);
-      // }
-      // setFilteredItems([]);
-      // setFilteredItems(books);
+
+      console.log(removeDUplicates(tempest));
+      setFilteredItems(removeDUplicates(tempest));
     }
   };
+
+  function removeDUplicates(data: Book[]) {
+    return data.filter((value, index) => data.indexOf(value) === index);
+  }
   return (
     <>
       <NavBar onSearch={HandleOnSearchInPut} />

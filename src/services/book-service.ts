@@ -22,4 +22,4 @@ export interface Book {
   Quote3: string;
 }
 
-export default create("/books?_limit=200");
+export default create("/books?_limit=240");

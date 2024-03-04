@@ -14,6 +14,7 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
   const [selectedFilterGenres, setSelectedFilterGenres] = useState<Book[]>([]);
   const [allGenres, setAllGenres] = useState([
     "Childrens",
+    "Contemporary",
     "Classics",
     "Young Adult",
     "Fiction",
@@ -21,6 +22,7 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
     "Fantasy",
     "Science Fiction",
     "Historical",
+    "Historical Fiction",
     "Academic",
     "School",
     "Romance",
