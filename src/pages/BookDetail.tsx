@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Route, Routes, useNavigate, useParams } from "react-router-dom";
-import bookService, { BookProps } from "../services/book-service";
+import book_detail_service, { BookProps } from "../services/bookdetail-service";
 import { CanceledError } from "axios";
 import NavBar from "../components/NavBar";
 import AsideBar from "../components/AsideBar";
@@ -24,7 +24,7 @@ const BookDetail = ({ onSearch }: Props) => {
   useEffect(() => {
     setLoading(true);
     setBookID(ID);
-    const { request, cancel } = bookService.getSingle(bookID);
+    const { request, cancel } = book_detail_service.getSingle(bookID);
     request
       .then((res) => {
         setLoading(false);
