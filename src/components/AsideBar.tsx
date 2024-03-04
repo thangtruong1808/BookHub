@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Book } from "../services/book-service";
 // import genres from "../data/genres";
 
-interface Genre {
-  name: string;
-}
+// interface Genre {
+//   name: string;
+// }
 interface Props {
   // genres: Genre[];
   onSelectedGenres: (genres: Book[]) => void;

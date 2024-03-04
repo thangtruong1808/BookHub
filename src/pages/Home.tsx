@@ -4,19 +4,26 @@ import AsideBar from "../components/AsideBar";
 import BookList from "../components/BookGrid";
 import useBooks from "../hooks/useBooks";
 import { Book } from "../services/book-service";
+import AuthorFilter from "../components/AuthorFilter";
 
 const Home = () => {
   const { books, error, isLoading, setError, setBooks } = useBooks();
   const [genresSelected, setSelectedFilterGenres] = useState<Book[]>([]);
   const [filteredItems, setFilteredItems] = useState<Book[]>(books);
   const [query, setQuery] = useState("");
+  const [selectedFilterAuthor, setSelectedFilterAuthor] = useState<string[]>(
+    []
+  );
 
   useEffect(() => {
-    console.log("INITIAL filteredItems: " + books.length);
     FilteredData(books, query);
     // FilterGenres();
   }, [books, genresSelected, query]);
 
+  const HandleSelectedAuthors = (authors: string[]) => {
+    setSelectedFilterAuthor(authors);
+    console.log("selectedFilterAuthor: " + selectedFilterAuthor);
+  };
   const HandleUpdateSelectedGenres = (genres: Book[]) => {
     setSelectedFilterGenres(genres);
   };
@@ -43,7 +50,7 @@ const Home = () => {
     }
     // Applying Genre filter
     if (genresSelected.length > 0) {
-      let tempest: Book[] = [];
+      const tempest: Book[] = [];
       genresSelected.forEach((e) => {
         filteredBooks.filter((book) => {
           if (book.id) {
@@ -68,15 +75,24 @@ const Home = () => {
   return (
     <>
       <NavBar onSearch={HandleOnSearchInPut} />
-      <div className="container-xxl mt-5">
-        <div className="container text-center fs-5 fw-bold  mb-3">
-          <span className="text-danger">
-            {filteredItems.length > 0 && (
-              <span>Total: {filteredItems.length} Books</span>
-            )}
-          </span>
+      <div className="container">
+        <div className="fw-bold fs-5 mt-5 mx-5 mb-2 text-capitalize ">
+          Filter by Author Name
         </div>
+        <div className="d-flex flex-row mx-5">
+          <AuthorFilter onSelectedAuthors={HandleSelectedAuthors} />
+        </div>
+      </div>
+      {/* <hr /> */}
+      <div className="container-xxl mt-2">
         <div className="row justify-content-center">
+          <div className="container text-center fs-5 fw-bold mb-3">
+            <span className="text-danger">
+              {filteredItems.length > 0 && (
+                <span>Total: {filteredItems.length} Books</span>
+              )}
+            </span>
+          </div>
           <div className="col-lg-2 vh-100 d-none d-lg-block text-center border-end">
             <AsideBar onSelectedGenres={HandleUpdateSelectedGenres} />
           </div>
