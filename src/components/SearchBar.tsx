@@ -7,13 +7,6 @@ interface Props {
 const SearchBar = ({ onSearch }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
 
-  // const HandleOnChange = () => {
-  //   setSearchTextInput(ref.current.value);
-  //   if (ref.current?.value === null) {
-  //     alert("You are here");
-  //   }
-  // };
-
   return (
     <form
       onSubmit={(event) => {

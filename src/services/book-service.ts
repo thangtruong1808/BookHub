@@ -13,7 +13,8 @@ export interface Book {
   edition: string;
   format: string;
   num_pages: number;
-  genres: Genre[];
+  // genres: Genre[];
+  genres: string;
   rating: number;
   image_url: string;
   Quote1: string;
@@ -21,4 +22,4 @@ export interface Book {
   Quote3: string;
 }
 
-export default create("/books");
+export default create("/books?_limit=200");

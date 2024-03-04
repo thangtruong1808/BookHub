@@ -32,6 +32,10 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
     "Read For School",
   ]);
 
+  useEffect(() => {
+    UpdateSelectedGenres();
+  }, [selectedFilterGenres]);
+
   const handleFilterGenre = (genre: Book) => {
     if (selectedFilterGenres.includes(genre)) {
       const filters = selectedFilterGenres.filter(
@@ -46,9 +50,6 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
   const UpdateSelectedGenres = () => {
     onSelectedGenres(selectedFilterGenres);
   };
-  useEffect(() => {
-    UpdateSelectedGenres();
-  }, [selectedFilterGenres]);
 
   return (
     <>

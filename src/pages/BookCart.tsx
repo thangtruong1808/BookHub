@@ -45,7 +45,7 @@ const BookCart = () => {
                   {unit.edition.length === 0 ? "N/A" : unit.edition}
                 </td>
                 <td className="text-center">{unit.num_pages}</td>
-                <td>{unit.genres as []}</td>
+                <td>{unit.genres as unknown as []}</td>
                 <td className="text-center">
                   {unit.rating}
                   <AiFillStar className="text-warning fs-3 mb-1" />
