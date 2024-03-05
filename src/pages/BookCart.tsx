@@ -15,9 +15,15 @@ const BookCart = () => {
   const HandleOnSearchInPut = (searchText: string) => {
     setQuery(searchText);
   };
+  const HandleOnSelectedGenres = () => {
+    console.log("");
+  };
   return (
     <>
-      <NavBar onSearch={HandleOnSearchInPut} />
+      <NavBar
+        onSearch={HandleOnSearchInPut}
+        onSelectedGenres={HandleOnSelectedGenres}
+      />
       <div className="d-flex justify-content-center container mt-5 text-danger  text-center">
         {favorites.length === 0 ? (
           <div className="flex-column mb-5 fw-bold fs-2">

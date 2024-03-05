@@ -27,12 +27,12 @@ const SearchBar = ({ onSearch }: Props) => {
         />
 
         <button
-          className="btn btn-primary "
+          className="btn btn-warning "
           type="submit"
           id="btn_search"
           style={{ width: "70px" }}
         >
-          <BsSearch style={{ fontSize: "20px" }} />
+          <BsSearch style={{ fontSize: "20px", color: "black" }} />
         </button>
       </div>
     </form>

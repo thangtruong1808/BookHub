@@ -19,12 +19,10 @@ const BookGrid = ({ books, isLoading }: Props) => {
     <>
       {/* {error && <h5 className="text-danger"> {error}</h5>} */}
       {isLoading && (
-        <div className="w-50 mb-5">
-          <span className="spinner-border "></span>
+        <div className="text-center mt-5">
+          <p className="spinner-border "></p>
           <br />
-          <span className="fw-bold fs-6 w-50 mt-5">
-            Loading in progress, please wait . . .
-          </span>
+          <p className="fw-bold fs-4 w-100 mt-2">Loading...</p>
         </div>
       )}
       {!isLoading && books.length === 0 ? (
@@ -37,11 +35,6 @@ const BookGrid = ({ books, isLoading }: Props) => {
       ) : (
         ""
       )}
-      {/* {books.length === 0 && (
-        <div className="text-uppercase fs-5 fw-bold text-danger mt-5">
-          Please update filters .
-        </div>
-      )} */}
       {books.map((book, index) => (
         <BookCard book={book} key={index} />
       ))}

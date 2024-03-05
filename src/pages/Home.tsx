@@ -6,49 +6,26 @@ import useBooks from "../hooks/useBooks";
 import { Book } from "../services/book-service";
 import AuthorFilter from "../components/AuthorFilter";
 import SearchBar from "../components/SearchBar";
+import genres from "../data/genres";
 
 const Home = () => {
-  const { books, error, isLoading, setError, setBooks } = useBooks();
+  const { books, isLoading } = useBooks();
   const [genresSelected, setSelectedFilterGenres] = useState<string[]>([]);
   const [filteredItems, setFilteredItems] = useState<Book[]>([]);
   const [query, setQuery] = useState("");
-  const [selectedFilterAuthor, setSelectedFilterAuthor] = useState<string>("");
+
   const [selectedAuthor, setSelectedAuthor] = useState("");
-  const [booksForSearchInputFiltered, setBooksForSearchInputFiltered] =
-    useState<Book[]>([]);
-  const [booksForAuthorFiltered, setBooksForAuthorFiltered] = useState<Book[]>(
-    []
-  );
-  const [booksForGenresFiltered, setBooksForGenresFiltered] = useState<Book[]>(
-    []
-  );
+
   useEffect(() => {
     FilteredData(books, query);
-    // FilterGenres();
-    // console.log("--------------------------------------");
   }, [books, genresSelected, query, selectedAuthor]);
 
-  // console.log("selectedAuthor: " + selectedAuthor);
-
-  // const handleSelectedAuthor = (author: string) => {
-  //   setSelectedAuthor(author);
-  // };
-  const HandleUpdateSelectedGenres = (genres: string[]) => {
-    setSelectedFilterGenres(genres);
-  };
-
-  // ----------- Handle Input Filter -----------
-  // const HandleOnSearchInPut = (searchText: string) => {
-  //   setQuery(searchText);
-  //   FilteredData(books, searchText);
+  // const HandleUpdateSelectedGenres = (genres: string[]) => {
+  //   setSelectedFilterGenres(genres);
   // };
 
   const FilteredData = (books: Book[], searchText: string) => {
     let filteredBooks: Book[] = books;
-    // console.log("books: " + books.length);
-    // console.log("filteredBooks: " + filteredBooks.length);
-    // console.log("filteredItems: " + filteredItems.length);
-    console.log("--------------------------------------------------------");
     // Filtering Input Items
     if (searchText) {
       console.log("You called SearchTextInPut");
@@ -57,12 +34,6 @@ const Home = () => {
           book.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
       );
       filteredBooks = filteredItemsInput;
-      // setBooksForGenresFiltered(filteredBooks);
-      // setBooksForSearchInputFiltered(filteredBooks);
-      // setFilteredItems(filteredBooks);
-      // setBooksForAuthorFiltered(filteredBooks);
-      // Applying Genre filter
-
       // START search Genre
       if (genresSelected.length > 0) {
         const tempest: Book[] = [];
@@ -149,9 +120,9 @@ const Home = () => {
     <>
       <NavBar
         onSearch={(searchText) => setQuery(searchText)}
-        onSelectedGenres={HandleUpdateSelectedGenres}
+        onSelectedGenres={(genres) => setSelectedFilterGenres(genres)}
       />
-      <div className="container">
+      <div className="container-xxl">
         <div className="d-lg-none d-md-block mt-3 w-100 me-5">
           {/* <SearchBar onSearch={HandleOnSearchInPut} /> */}
           <SearchBar onSearch={(searchText) => setQuery(searchText)} />
@@ -174,10 +145,12 @@ const Home = () => {
       {/* <hr /> */}
       <div className="container-xxl mt-2">
         <div className="row justify-content-center">
-          <div className="col-lg-2 vh-100 d-none d-lg-block text-center border-end">
-            <AsideBar onSelectedGenres={HandleUpdateSelectedGenres} />
+          <div className="col-lg-2 d-none d-lg-block text-center border-end">
+            <AsideBar
+              onSelectedGenres={(genres) => setSelectedFilterGenres(genres)}
+            />
           </div>
-          <div className="col-lg-10 row row-cols-4 justify-content-evenly p-0">
+          <div className="col-12 col-lg-10 row row-cols-4 justify-content-around">
             <BookList books={filteredItems} isLoading={isLoading} />
           </div>
         </div>
