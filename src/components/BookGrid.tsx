@@ -18,10 +18,21 @@ const BookGrid = ({ books, isLoading }: Props) => {
   return (
     <>
       {/* {error && <h5 className="text-danger"> {error}</h5>} */}
-      {isLoading && <div className="spinner-border"></div>}
+      {isLoading && (
+        <div className="w-50 mb-5">
+          <span className="spinner-border "></span>
+          <br />
+          <span className="fw-bold fs-6 w-50 mt-5">
+            Loading in progress, please wait . . .
+          </span>
+        </div>
+      )}
       {!isLoading && books.length === 0 ? (
-        <div className="text-uppercase fs-5 fw-bold text-danger mt-5">
-          Please update filters .
+        <div
+          className="text-uppercase fs-6 fw-bold text-danger mt-5 w-50"
+          // style={{ width: "550px" }}
+        >
+          Sorry, No books found, Please update filters.
         </div>
       ) : (
         ""

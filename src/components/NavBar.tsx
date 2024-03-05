@@ -10,12 +10,14 @@ import { useAppContext } from "./context/bookContext.js";
 import { Book } from "../services/book-service.js";
 import { useThemeContext } from "../hooks/useThemeContext.js";
 import ThemeSwitch from "./ThemeSwitch.js";
+import GenreMenu from "./GenreMenu.js";
 
 interface Props {
   // onProfileClick: () => void;
   onSearch: (searchText: string) => void;
+  onSelectedGenres: (genres: string[]) => void;
 }
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
   const navigate = useNavigate();
   const { darkMode, setDarkMode } = useThemeContext();
 
@@ -37,6 +39,7 @@ const NavBar = ({ onSearch }: Props) => {
   return (
     <>
       <div className="container-fluid bg-success d-flex justify-content-between">
+        {/* Logo */}
         <div
           className="p-3 Logo"
           onClick={() => {
@@ -48,9 +51,18 @@ const NavBar = ({ onSearch }: Props) => {
           <GiBookshelf style={{ width: "80px", height: "50px" }} />
           <span className="text-uppercase fw-bold fs-5">bookhub</span>
         </div>
-        <div className="w-50 p-4">
-          <SearchBar onSearch={onSearch} />
+
+        {/* Search and Menu */}
+        <div className="w-50 text-center">
+          <div className="p-4 d-lg-none d-md-block">
+            <GenreMenu onSelectedGenres={onSelectedGenres} />
+          </div>
+          <div className="p-4 d-none d-lg-block">
+            <SearchBar onSearch={onSearch} />
+          </div>
         </div>
+
+        {/* Profile and Cart */}
         <div className="p-3">
           <div className="hstack">
             <button
@@ -105,11 +117,6 @@ const NavBar = ({ onSearch }: Props) => {
                       alt="Logo"
                       width={"100px"}
                       height={"100px"}
-                      // onClick={() => navigate("/myprofile")}
-                      // onClick={onProfileClick}
-                      // data-bs-toggle="offcanvas"
-                      // data-bs-target="#offcanvasExample"
-                      // aria-controls="offcanvasExample"
                     />
                     <div className="vstack">
                       <span className="fw-bold fs-4 text-uppercase">

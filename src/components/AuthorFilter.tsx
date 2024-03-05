@@ -1,70 +1,47 @@
 import React, { useEffect, useState } from "react";
+import { Book } from "../services/book-service";
+import useBooks from "../hooks/useBooks";
 
 interface Props {
-  onSelectedAuthors: (authors: string[]) => void;
+  onSelectedAuthor: (author: string) => void;
 }
 
-const AuthorFilter = ({ onSelectedAuthors }: Props) => {
-  const [selectedFilterAuthor, setSelectedFilterAuthor] = useState<string[]>(
-    []
-  );
-
-  const [authors, setAuthors] = useState([
-    "Young Adult",
-    "Fiction",
-    "Dystopia",
-    "Fantasy",
-    "Science Fiction",
-    "Historical",
-    "Historical Fiction",
-    "Academic",
-    "School",
-    "Romance",
-    "Paranormal",
-    "Vampires",
-    "Literature",
-    "Politics",
-    "Novels",
-  ]);
+const AuthorFilter = ({ onSelectedAuthor }: Props) => {
+  const { books } = useBooks();
+  const [authors, setAuthors] = useState<string[]>([]);
 
   useEffect(() => {
-    UpdateSelectedAuthors();
-  }, [selectedFilterAuthor]);
+    FilteredAuthorsFunction();
+  }, [books]);
 
-  const handleSelectedAuthors = (author: string) => {
-    if (selectedFilterAuthor.includes(author)) {
-      const filters = selectedFilterAuthor.filter(
-        (element) => element !== author
-      );
-      setSelectedFilterAuthor(filters);
-    } else {
-      setSelectedFilterAuthor([...selectedFilterAuthor, author]);
-    }
+  const FilteredAuthorsFunction = () => {
+    const filteredAuthors: string[] = [];
+    books.map((book) => {
+      if (book.authors) {
+        filteredAuthors.push(book.authors);
+      }
+    });
+    setAuthors(filteredAuthors);
   };
-
-  const UpdateSelectedAuthors = () => {
-    onSelectedAuthors(selectedFilterAuthor);
-  };
-
+  // remove duplicates object
+  function removeDUplicates(data: string[]) {
+    return data.filter((value, index) => data.indexOf(value) === index);
+  }
+  const finalResult = removeDUplicates(authors);
   return (
-    <>
-      <div>
-        {authors.sort().map((author, index) => (
-          <div
-            className={
-              selectedFilterAuthor.includes(author)
-                ? "btn btn-primary p-2 mb-2 mx-1 fw-bold text-dark "
-                : "btn btn-outline-primary p-2 mb-2 mx-1"
-            }
-            key={index}
-            style={{ width: "150px" }}
-            onClick={() => handleSelectedAuthors(author)}
-          >
-            {author}
-          </div>
-        ))}
-      </div>
-    </>
+    <select
+      className="form-select"
+      // multiple
+
+      onChange={(event) => onSelectedAuthor(event.target.value)}
+    >
+      <option value="">Select Favorite Author </option>
+      {finalResult.map((author, index) => (
+        <option key={index} value={author}>
+          {author}
+        </option>
+      ))}
+    </select>
   );
 };
 

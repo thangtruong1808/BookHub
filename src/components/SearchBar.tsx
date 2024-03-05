@@ -16,7 +16,7 @@ const SearchBar = ({ onSearch }: Props) => {
         }
       }}
     >
-      <div className="input-group ">
+      <div className="input-group">
         <input
           // onChange={HandleOnChange}
           id="searchTextInput"
@@ -25,8 +25,14 @@ const SearchBar = ({ onSearch }: Props) => {
           type="search"
           placeholder="Search by title . . . "
         />
-        <button className="input-group-text " type="submit" id="btn_search">
-          <BsSearch />
+
+        <button
+          className="btn btn-primary "
+          type="submit"
+          id="btn_search"
+          style={{ width: "70px" }}
+        >
+          <BsSearch style={{ fontSize: "20px" }} />
         </button>
       </div>
     </form>
