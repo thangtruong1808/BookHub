@@ -44,56 +44,58 @@ const BookDetail = () => {
   };
   return (
     <>
-      <NavBar
-        onSearch={HandleOnSearch}
-        onSelectedGenres={HandleOnSelectedGenres}
-      />
-      <div className="container mt-5">
-        <div className="hstack">
-          <div>
-            <img
-              src={bookdetail?.image_url}
-              alt={bookdetail?.title}
-              style={{ width: "15rem", height: "25rem" }}
-            />
-          </div>
-          <div className="cart-body">
-            <p className="fs-2 fw-bold mx-5">{bookdetail?.title}</p>
-            <p className="fs-5 mx-5 ">
-              <span className="fw-bold ">Author:</span>
-              <span className="badge bg-info text-dark mx-2">
-                {bookdetail?.authors}
-              </span>
-            </p>
-            <p className="fs-6 mx-5">
-              <span className="fw-bold">Genres:</span>
-              <span className="mx-2">{bookdetail?.genres}</span>
-            </p>
-            <p className="fs-6 mx-5">
-              <span className="fw-bold">Description:</span>
-              <span className="mx-2">{bookdetail?.description}</span>
-            </p>
-            <p className="fs-6 mx-5">
-              <span className="fw-bold">Rating:</span>
-              <span className="badge bg-light text-dark fs-6 mx-2">
-                {bookdetail?.rating}
-              </span>
-              <AiFillStar className="text-warning fs-4 mb-1" />
-              <span className="mx-5">
-                Pages:{" "}
-                <span className="badge bg-secondary fs-6">
-                  {bookdetail?.num_pages}
+      <div className="myApp">
+        <NavBar
+          onSearch={HandleOnSearch}
+          onSelectedGenres={HandleOnSelectedGenres}
+        />
+        <div className="container mt-5 vh-100">
+          <div className="hstack">
+            <div>
+              <img
+                src={bookdetail?.image_url}
+                alt={bookdetail?.title}
+                style={{ width: "15rem", height: "25rem" }}
+              />
+            </div>
+            <div className="cart-body">
+              <p className="fs-2 fw-bold mx-5">{bookdetail?.title}</p>
+              <p className="fs-5 mx-5 ">
+                <span className="fw-bold ">Author:</span>
+                <span className="badge bg-info text-dark mx-2">
+                  {bookdetail?.authors}
                 </span>
-              </span>
-            </p>
+              </p>
+              <p className="fs-6 mx-5">
+                <span className="fw-bold">Genres:</span>
+                <span className="mx-2">{bookdetail?.genres}</span>
+              </p>
+              <p className="fs-6 mx-5">
+                <span className="fw-bold">Description:</span>
+                <span className="mx-2">{bookdetail?.description}</span>
+              </p>
+              <p className="fs-6 mx-5">
+                <span className="fw-bold">Rating:</span>
+                <span className="badge bg-light text-dark fs-6 mx-2">
+                  {bookdetail?.rating}
+                </span>
+                <AiFillStar className="text-warning fs-4 mb-1" />
+                <span className="mx-5">
+                  Pages:{" "}
+                  <span className="badge bg-secondary fs-6">
+                    {bookdetail?.num_pages}
+                  </span>
+                </span>
+              </p>
+            </div>
           </div>
+          <button
+            className="btn btn-dark btn-sm mt-3"
+            onClick={() => navigate("/")}
+          >
+            Back
+          </button>
         </div>
-        <button
-          className="btn btn-dark btn-sm mt-3"
-          onClick={() => navigate("/")}
-        >
-          Back
-        </button>
       </div>
     </>
   );

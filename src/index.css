@@ -1,3 +1,34 @@
+:root{
+    --body_background: white;
+    --body_color: black;
+    --link_color:navy;
+}
+
+[data-theme="dark"]{
+    --body_background: #282c34;
+    --body_color: white;
+    --link_color: cyan;
+}
+
+.myApp{
+    background-color: var(--body_background);
+    color: var(--body_color);
+}
+/* .for_light_theme{
+    --primary-color:#302ae6;
+    --secondary-color:#536390;
+    --font-color:#424242;
+    --bg-color: #fff;
+    --heading-color:#292922;
+}
+.for_dark_theme {
+    --primary-color: #9a97f3;
+    --secondary-color: #818cab;
+    --font-color: #e1e1ff;
+    --bg-color: #161625;
+    --heading-color: #818cab;
+} */
+
 /* div.mycard {    
     transition: all 0.5s;     */
     /* width: 250px;

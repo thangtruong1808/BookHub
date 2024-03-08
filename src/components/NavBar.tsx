@@ -21,16 +21,8 @@ const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
   const navigate = useNavigate();
   const { darkMode, setDarkMode } = useThemeContext();
 
-  const switchTheme = () => setDarkMode((prev) => !prev);
-
   const { favorites, AddToFavorites, RemoveFromFavorites } =
     useAppContext() as Book[];
-
-  useEffect(() => {
-    darkMode
-      ? document.documentElement.setAttribute("darkMode", "")
-      : document.documentElement.removeAttribute("darkMode", "");
-  }, [darkMode]);
 
   // const ReturnHomePage = () => {
   //   navigate("/");
@@ -38,7 +30,7 @@ const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
   // };
   return (
     <>
-      <div className="container-fluid bg-success d-flex justify-content-between">
+      <div className="myApp container-fluid bg-success d-flex justify-content-between">
         {/* Logo */}
         <div
           className="p-3 Logo"
@@ -70,12 +62,9 @@ const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
               className="btn btn-success me-5 position-relative"
               onClick={() => navigate("/bookcart")}
             >
-              <FiShoppingCart
-                style={{ width: "35px", height: "35px" }}
-                className=""
-              />
+              <FiShoppingCart style={{ width: "35px", height: "35px" }} />
               <span className="position-absolute top-0 start-200 badge rounded-pill bg-danger fs-6">
-                {favorites.length > 0 ? favorites.length : ""}
+                {favorites.length > 0 && favorites.length}
               </span>
             </button>
             <img
@@ -84,22 +73,20 @@ const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
               alt="Logo"
               width={"50px"}
               height={"50px"}
-              // onClick={() => navigate("/myprofile")}
-              // onClick={onProfileClick}
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasExample"
               aria-controls="offcanvasExample"
             />
 
             <div
-              className="offcanvas offcanvas-end"
+              className="myApp offcanvas offcanvas-end "
               tabIndex="-1"
               data-bs-scroll="true"
               data-bs-backdrop="true"
               id="offcanvasExample"
               aria-labelledby="offcanvasExample"
             >
-              <div className="text-end mt-2 me-2">
+              <div className="myApp text-end ">
                 <button
                   type="button"
                   className="btn-close"
@@ -108,7 +95,7 @@ const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
                 ></button>
               </div>
 
-              <div className="offcanvas-header position-relative">
+              <div className="myApp offcanvas-header position-relative ">
                 <div className="vstack">
                   <div className="hstack gap-3">
                     <img
@@ -131,28 +118,29 @@ const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
                   <hr />
                 </div>
               </div>
-              <span className="mx-3 fw-bold fs-5">Education</span>
-              <ul>
-                <li>Swinburne University of Technology</li>
-              </ul>
-              <span className="mx-3 fw-bold fs-5">Skills</span>
-              <ul className="">
-                <li>Responsive Websites</li>
-                <li>JavaScript (ReactJS and VueJS)</li>
-                <li>PHP and NodeJS</li>
-                <li>SoftWare Development for Mobile - Kotlin</li>
-                <li>AWS Architecture Cloud</li>
-                <li>MySQL, SQL and MongoDB</li>
-              </ul>
-              <span className="mx-3 fw-bold fs-5">Favorites</span>
-              <ul>
-                <li>Swimming</li>
-                <li>Badminton</li>
-                <li>BBQ</li>
-                <li>Camping</li>
-              </ul>
-
-              <ThemeSwitch />
+              <div className="myApp">
+                <span className="mx-3 fw-bold fs-5">Education</span>
+                <ul>
+                  <li>Swinburne University of Technology</li>
+                </ul>
+                <span className="mx-3 fw-bold fs-5">Skills</span>
+                <ul className="">
+                  <li>Responsive Websites</li>
+                  <li>JavaScript (ReactJS and VueJS)</li>
+                  <li>PHP and NodeJS</li>
+                  <li>SoftWare Development for Mobile - Kotlin</li>
+                  <li>AWS Architecture Cloud</li>
+                  <li>MySQL, SQL and MongoDB</li>
+                </ul>
+                <span className="mx-3 fw-bold fs-5">Favorites</span>
+                <ul>
+                  <li>Swimming</li>
+                  <li>Badminton</li>
+                  <li>BBQ</li>
+                  <li>Camping</li>
+                </ul>
+                <ThemeSwitch />
+              </div>
             </div>
           </div>
         </div>

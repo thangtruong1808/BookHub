@@ -7,6 +7,7 @@ import { Book } from "../services/book-service";
 import AuthorFilter from "../components/AuthorFilter";
 import SearchBar from "../components/SearchBar";
 import genres from "../data/genres";
+import ThemeSwitch from "../components/ThemeSwitch";
 
 const Home = () => {
   const { books, isLoading } = useBooks();
@@ -116,42 +117,52 @@ const Home = () => {
   }
 
   // filteredItems.forEach((e) => console.log(e));
+
+  // const handleSelectedFilterGenres = (genres: string[]) => {
+  //   // setSelectedFilterGenres(genres);
+  //   console.log(genres);
+  // };
   return (
     <>
-      <NavBar
-        onSearch={(searchText) => setQuery(searchText)}
-        onSelectedGenres={(genres) => setSelectedFilterGenres(genres)}
-      />
-      <div className="container-xxl">
-        <div className="d-lg-none d-md-block mt-3 w-100 me-5">
-          {/* <SearchBar onSearch={HandleOnSearchInPut} /> */}
-          <SearchBar onSearch={(searchText) => setQuery(searchText)} />
-        </div>
-        <div className="fw-bold fs-5 mt-3 mx-5 mb-2 text-capitalize ">
-          Filter by Author Name
-        </div>
-        <div className="w-50 justify-content-center mx-5">
-          <AuthorFilter
-            onSelectedAuthor={(author) => setSelectedAuthor(author)}
-          />
-        </div>
-      </div>
-      <hr />
-      <div className=" text-center fs-5 fw-bold mb-3 mx-5">
-        {filteredItems.length > 0 && (
-          <span>Total: {filteredItems.length} Books</span>
-        )}
-      </div>
-      {/* <hr /> */}
-      <div className="container-xxl mt-2">
-        <div className="row justify-content-center">
-          <div className="col-lg-2 d-none d-lg-block text-center border-end">
-            <AsideBar
-              onSelectedGenres={(genres) => setSelectedFilterGenres(genres)}
+      <div className="myApp">
+        <NavBar
+          onSearch={(searchText) => setQuery(searchText)}
+          onSelectedGenres={(genres) => setSelectedFilterGenres(genres)}
+        />
+        <div className="container-xxl">
+          <div className="d-lg-none d-md-block mt-3 w-100 me-5">
+            {/* <SearchBar onSearch={HandleOnSearchInPut} /> */}
+            <SearchBar onSearch={(searchText) => setQuery(searchText)} />
+          </div>
+          <div className="fw-bold fs-5 mt-3 mx-5 mb-2 text-capitalize ">
+            <div className="hstack gap-3 mx-3">
+              <span>Filter by Author Name</span>
+              <ThemeSwitch />
+            </div>
+          </div>
+          <div className="w-50 justify-content-center mx-5">
+            <AuthorFilter
+              onSelectedAuthor={(author) => setSelectedAuthor(author)}
             />
           </div>
-          <div className="col-12 col-lg-10 row row-cols-4 justify-content-around">
-            <BookList books={filteredItems} isLoading={isLoading} />
+        </div>
+        <hr />
+        <div className=" text-center fs-5 fw-bold mb-3 mx-5">
+          {filteredItems.length > 0 && (
+            <span>Total: {filteredItems.length} Books</span>
+          )}
+        </div>
+        {/* <hr /> */}
+        <div className="container-xxl mt-2">
+          <div className="row justify-content-center">
+            <div className="col-lg-2 d-none d-lg-block text-center border-end">
+              <AsideBar
+                onSelectedGenres={(genres) => setSelectedFilterGenres(genres)}
+              />
+            </div>
+            <div className="col-12 col-lg-10 row row-cols-4 justify-content-around">
+              <BookList books={filteredItems} isLoading={isLoading} />
+            </div>
           </div>
         </div>
       </div>

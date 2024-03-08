@@ -6,7 +6,16 @@ import { Book } from "../../services/book-service";
 // import { Book } from "../../services/book-service";
 // import { Book } from "../../services/book-service";
 
-export const AppContext = createContext<Book[]>([]);
+type bookContextProviderProps = {
+  children: React.ReactNode;
+};
+// export const AppContext = createContext<Book[]>([]);
+
+export const AppContext = createContext<{
+  favorites: Book[];
+  AddToFavorites: (book: Book) => void;
+  RemoveFromFavorites: (id: number) => void;
+} | null>(null);
 
 export const useAppContext = () => {
   const context = useContext(AppContext);
@@ -18,13 +27,8 @@ export const useAppContext = () => {
   return context;
 };
 
-// interface Props {
-//   books: Book[];
-// }
-// const bookContextProvider: React.FC<{ children: React.ReactNode }> = ({
-const bookContextProvider: React.FC = ({ children }) => {
+const bookContextProvider = ({ children }: bookContextProviderProps) => {
   const [favorites, setFavorites] = useState<Book[]>([]);
-  // const [favorites, setFavorites] = useState([]);
 
   const AddToFavorites = (book: Book) => {
     const oldFavovirites = [...favorites];
@@ -38,6 +42,7 @@ const bookContextProvider: React.FC = ({ children }) => {
     const newFavorites = oldFavovirites.filter((book) => book.id !== id);
     setFavorites(newFavorites);
   };
+
   const value = {
     favorites,
     AddToFavorites,
@@ -45,5 +50,4 @@ const bookContextProvider: React.FC = ({ children }) => {
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
-
 export default bookContextProvider;
