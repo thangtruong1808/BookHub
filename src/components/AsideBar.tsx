@@ -42,13 +42,13 @@ const AsideBar = ({
   ]);
 
   useEffect(() => {
-    console.log("------- you called AsideBar Component -------");
+    // console.log("------- you called AsideBar Component -------");
     UpdateSelectedGenres();
     // setSelectedGenre2(selectedGenrefromHomeComponent);
   }, [selectedFilterGenres]);
 
   const handleFilterGenre = (genre: string) => {
-    console.log("--- You clicked handleFilterGenre  ---");
+    // console.log("--- You clicked handleFilterGenre  ---");
 
     if (selectedFilterGenres.includes(genre)) {
       const filters = selectedFilterGenres.filter(
@@ -63,30 +63,14 @@ const AsideBar = ({
       // onSelectedGenres(selectedFilterGenres);
     }
   };
-  console.log("selectedFilterGenres: " + selectedFilterGenres);
-  console.log(
-    "selectedGenrefromHomeComponent: " + selectedGenrefromHomeComponent
-  );
+  // console.log("selectedFilterGenres: " + selectedFilterGenres);
+  // console.log(
+  //   "selectedGenrefromHomeComponent: " + selectedGenrefromHomeComponent
+  // );
   const UpdateSelectedGenres = () => {
-    console.log(
-      "------- you called UpdateSelectedGenres AsideBar Component -------"
-    );
-
     onSelectedGenres(selectedFilterGenres);
   };
-  // console.log("selectedFilterGenres: " + selectedFilterGenres);
-  // console.log("selectedGenre: " + selectedGenre);
-  // console.log(
-  //   "---------------------------------------------------------------------"
-  // );
 
-  // const myClass = (genre: string) => {
-  //   selectedFilterGenres.forEach((e) => {
-  //     e === genre
-  //       ? "className = `form-check-label ms-2 fw-bold text-danger`"
-  //       : "className = `form-check-label ms-2`";
-  //   });
-  // };
   return (
     <>
       <div className="fw-bold text-uppercase">Advanced Filter</div>
@@ -115,7 +99,6 @@ const AsideBar = ({
               <div
                 className="form-check accordion-body hstack form-check ms-4 "
                 key={index}
-                onClick={() => handleFilterGenre(genre)}
               >
                 <input
                   className="form-check-input"
@@ -127,10 +110,11 @@ const AsideBar = ({
                       ? true
                       : false
                   }
-                  // checked={true}
+                  onChange={() => handleFilterGenre(genre)}
                   value={genre}
                 />
                 <label
+                  onClick={() => handleFilterGenre(genre)}
                   // className="form-check-label ms-1"
                   className={
                     // selectedGenrefromHomeComponent
