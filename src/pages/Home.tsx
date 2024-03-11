@@ -76,13 +76,13 @@ const Home = () => {
         genresSelected.forEach((e) => {
           filteredBooks.filter((book) => {
             if (book.genres.indexOf(e) !== -1) {
-              console.log("book.genres: " + book.genres);
-              console.log("genresSelected: " + e);
+              // console.log("book.genres: " + book.genres);
+              // console.log("genresSelected: " + e);
               tempBookArray.push(book);
             }
           });
           // setTempArray(tempArray2);
-          console.log("tempArray: " + tempBookArray.length);
+          // console.log("tempArray: " + tempBookArray.length);
           // const tempArray3 = tempArray2;
         });
         const result = removeDUplicates(tempBookArray);
@@ -125,6 +125,7 @@ const Home = () => {
         <NavBar
           onSearch={(searchText) => setQuery(searchText)}
           onSelectedGenres={(genres) => setSelectedFilterGenres(genres)}
+          selectedGenrefromHomeComponent={genresSelected}
         />
         <div className="container-xxl">
           <div className="d-lg-none d-md-block mt-3 w-100 me-5">
@@ -155,6 +156,7 @@ const Home = () => {
             <div className="col-lg-2 d-none d-lg-block text-center border-end">
               <AsideBar
                 onSelectedGenres={(genres) => setSelectedFilterGenres(genres)}
+                selectedGenrefromHomeComponent={genresSelected}
               />
             </div>
             <div className="col-12 col-lg-10 row row-cols-4 justify-content-around">

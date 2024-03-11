@@ -8,12 +8,17 @@ import { Book } from "../services/book-service";
 interface Props {
   // genres: Genre[];
   onSelectedGenres: (genres: string[]) => void;
+  selectedGenrefromHomeComponent: string[] | undefined;
 }
-const AsideBar = ({ onSelectedGenres }: Props) => {
+const AsideBar = ({
+  onSelectedGenres,
+  selectedGenrefromHomeComponent,
+}: Props) => {
   const [selectedFilterGenres, setSelectedFilterGenres] = useState<string[]>(
     []
   );
   const [selectedGenre, setSelectedGenre] = useState<string>("");
+  const [selectedGenre2, setSelectedGenre2] = useState<string[] | null>([]);
   const [allGenres, setAllGenres] = useState([
     "Childrens",
     "Contemporary",
@@ -37,12 +42,13 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
   ]);
 
   useEffect(() => {
-    // console.log("------- you called AsideBar Component -------");
+    console.log("------- you called AsideBar Component -------");
     UpdateSelectedGenres();
+    // setSelectedGenre2(selectedGenrefromHomeComponent);
   }, [selectedFilterGenres]);
 
   const handleFilterGenre = (genre: string) => {
-    // console.log("--- You clicked  ---");
+    console.log("--- You clicked handleFilterGenre  ---");
 
     if (selectedFilterGenres.includes(genre)) {
       const filters = selectedFilterGenres.filter(
@@ -57,8 +63,15 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
       // onSelectedGenres(selectedFilterGenres);
     }
   };
-
+  console.log("selectedFilterGenres: " + selectedFilterGenres);
+  console.log(
+    "selectedGenrefromHomeComponent: " + selectedGenrefromHomeComponent
+  );
   const UpdateSelectedGenres = () => {
+    console.log(
+      "------- you called UpdateSelectedGenres AsideBar Component -------"
+    );
+
     onSelectedGenres(selectedFilterGenres);
   };
   // console.log("selectedFilterGenres: " + selectedFilterGenres);
@@ -102,22 +115,41 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
               <div
                 className="form-check accordion-body hstack form-check ms-4 "
                 key={index}
+                onClick={() => handleFilterGenre(genre)}
               >
                 <input
                   className="form-check-input"
                   type="checkbox"
                   id={genre}
+                  // id="checkbox"
+                  checked={
+                    selectedGenrefromHomeComponent?.includes(genre)
+                      ? true
+                      : false
+                  }
+                  // checked={true}
                   value={genre}
-                  onClick={() => handleFilterGenre(genre)}
                 />
                 <label
                   // className="form-check-label ms-1"
                   className={
-                    selectedFilterGenres.includes(genre)
-                      ? "form-check-label ms-2 fw-bold text-danger "
+                    // selectedGenrefromHomeComponent
+                    // selectedFilterGenres
+
+                    selectedGenrefromHomeComponent?.includes(genre)
+                      ? "form-check-label ms-2 fw-bold text-primary"
                       : "form-check-label ms-2 "
+
+                    // ? "form-check-label ms-2 fw-bold text-danger "
+                    //     : "form-check-label ms-2 "
                   }
-                  htmlFor={genre}
+                  // htmlFor={genre}
+                  // htmlFor="checkbox"
+                  // htmlFor={allGenres.forEach((gen) => {
+                  //   selectedGenrefromHomeComponent?.filter((gen2) => {
+                  //     gen2 === gen && gen2;
+                  //   });
+                  // })}
                 >
                   {genre}
                 </label>

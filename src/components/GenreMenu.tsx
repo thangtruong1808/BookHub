@@ -9,9 +9,13 @@ import { GiBookshelf } from "react-icons/gi";
 interface Props {
   // genres: Genre[];
   onSelectedGenres: (genres: string[]) => void;
+  selectedGenrefromHomeComponent: string[] | undefined;
 }
 
-const GenreMenu = ({ onSelectedGenres }: Props) => {
+const GenreMenu = ({
+  onSelectedGenres,
+  selectedGenrefromHomeComponent,
+}: Props) => {
   return (
     <>
       <div
@@ -52,7 +56,10 @@ const GenreMenu = ({ onSelectedGenres }: Props) => {
             </div>
           </div>
           <div className="offcanvas-body">
-            <AsideBar onSelectedGenres={onSelectedGenres} />
+            <AsideBar
+              onSelectedGenres={onSelectedGenres}
+              selectedGenrefromHomeComponent={selectedGenrefromHomeComponent}
+            />
           </div>
         </div>
       </div>

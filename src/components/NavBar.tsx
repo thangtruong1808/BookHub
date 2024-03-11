@@ -16,8 +16,13 @@ interface Props {
   // onProfileClick: () => void;
   onSearch: (searchText: string) => void;
   onSelectedGenres: (genres: string[]) => void;
+  selectedGenrefromHomeComponent: string[] | undefined;
 }
-const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
+const NavBar = ({
+  onSearch,
+  onSelectedGenres,
+  selectedGenrefromHomeComponent,
+}: Props) => {
   const navigate = useNavigate();
   const { darkMode, setDarkMode } = useThemeContext();
 
@@ -49,7 +54,10 @@ const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
         {/* Search and Menu */}
         <div className="w-50 text-center">
           <div className="p-4 d-lg-none d-md-block">
-            <GenreMenu onSelectedGenres={onSelectedGenres} />
+            <GenreMenu
+              onSelectedGenres={onSelectedGenres}
+              selectedGenrefromHomeComponent={selectedGenrefromHomeComponent}
+            />
           </div>
           <div className="p-4 d-none d-lg-block">
             <SearchBar onSearch={onSearch} />
