@@ -11,6 +11,8 @@ const AuthorFilter = ({ onSelectedAuthor }: Props) => {
   const [authors, setAuthors] = useState<string[]>([]);
 
   useEffect(() => {
+    // console.log("------- You called AuthorFilter Component -------");
+
     FilteredAuthorsFunction();
   }, [books]);
 

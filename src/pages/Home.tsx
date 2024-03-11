@@ -14,10 +14,12 @@ const Home = () => {
   const [genresSelected, setSelectedFilterGenres] = useState<string[]>([]);
   const [filteredItems, setFilteredItems] = useState<Book[]>([]);
   const [query, setQuery] = useState("");
+  // const [tempArray, setTempArray] = useState<Book[]>([]);
 
   const [selectedAuthor, setSelectedAuthor] = useState("");
 
   useEffect(() => {
+    // console.log("------- You called Home Component -------");
     FilteredData(books, query);
   }, [books, genresSelected, query, selectedAuthor]);
 
@@ -29,7 +31,7 @@ const Home = () => {
     let filteredBooks: Book[] = books;
     // Filtering Input Items
     if (searchText) {
-      console.log("You called SearchTextInPut");
+      // console.log("You called SearchTextInPut");
       const filteredItemsInput = filteredBooks.filter(
         (book) =>
           book.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1
@@ -37,22 +39,16 @@ const Home = () => {
       filteredBooks = filteredItemsInput;
       // START search Genre
       if (genresSelected.length > 0) {
-        const tempest: Book[] = [];
+        const tempBookArray: Book[] = [];
         genresSelected.forEach((e) => {
-          filteredBooks.filter((book) => {
-            if (book) {
-              if (book.genres.indexOf(e) !== -1) {
-                if (!tempest.includes(book)) {
-                  tempest.push(book);
-                  // Filter from the 2nd book and will add if already exist
-                } else {
-                  tempest.push(book);
-                }
-              }
+          filteredBooks.filter((book: Book) => {
+            if (book.genres.indexOf(e) !== -1) {
+              tempBookArray.push(book);
+              // }
             }
           });
         });
-        const result = removeDUplicates(tempest);
+        const result = removeDUplicates(tempBookArray);
         // Author Filter
         if (selectedAuthor) {
           const res = result.filter((book) => book.authors === selectedAuthor);
@@ -73,25 +69,23 @@ const Home = () => {
       // END search Genre
     }
     if (!searchText) {
-      console.log("You are here NOT SEARCHTEXT");
+      // console.log("You are here NOT SEARCHTEXT");
       // START search Genre
       if (genresSelected.length > 0) {
-        const tempest: Book[] = [];
+        const tempBookArray: Book[] = [];
         genresSelected.forEach((e) => {
           filteredBooks.filter((book) => {
-            if (book) {
-              if (book.genres.indexOf(e) !== -1) {
-                if (!tempest.includes(book)) {
-                  tempest.push(book);
-                  // Filter from the 2nd book and will add if already exist
-                } else {
-                  tempest.push(book);
-                }
-              }
+            if (book.genres.indexOf(e) !== -1) {
+              console.log("book.genres: " + book.genres);
+              console.log("genresSelected: " + e);
+              tempBookArray.push(book);
             }
           });
+          // setTempArray(tempArray2);
+          console.log("tempArray: " + tempBookArray.length);
+          // const tempArray3 = tempArray2;
         });
-        const result = removeDUplicates(tempest);
+        const result = removeDUplicates(tempBookArray);
         // Author Filter
         if (selectedAuthor) {
           const res = result.filter((book) => book.authors === selectedAuthor);
@@ -113,6 +107,9 @@ const Home = () => {
 
   // remove duplicates object
   function removeDUplicates(data: Book[]) {
+    // return data.filter(
+    //   (book, index, self) => index === self.findIndex((b) => b.id === book.id)
+    // );
     return data.filter((value, index) => data.indexOf(value) === index);
   }
 

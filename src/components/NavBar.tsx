@@ -28,6 +28,8 @@ const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
   //   navigate("/");
   //   window.location.reload();
   // };
+  // console.log("------- You called NavBar Component -------");
+
   return (
     <>
       <div className="myApp container-fluid bg-success d-flex justify-content-between">
@@ -139,7 +141,7 @@ const NavBar = ({ onSearch, onSelectedGenres }: Props) => {
                   <li>BBQ</li>
                   <li>Camping</li>
                 </ul>
-                <ThemeSwitch />
+                {/* <ThemeSwitch /> */}
               </div>
             </div>
           </div>

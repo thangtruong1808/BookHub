@@ -37,36 +37,35 @@ const AsideBar = ({ onSelectedGenres }: Props) => {
   ]);
 
   useEffect(() => {
-    console.log("------- you called AsideBar -------");
+    // console.log("------- you called AsideBar Component -------");
     UpdateSelectedGenres();
   }, [selectedFilterGenres]);
 
   const handleFilterGenre = (genre: string) => {
-    console.log("--- You clicked  ---");
+    // console.log("--- You clicked  ---");
 
     if (selectedFilterGenres.includes(genre)) {
       const filters = selectedFilterGenres.filter(
         (element) => element !== genre
       );
       setSelectedFilterGenres(filters);
-      setSelectedGenre(genre);
+      // setSelectedGenre(genre);
       // onSelectedGenres(selectedFilterGenres);
     } else {
       setSelectedFilterGenres([...selectedFilterGenres, genre]);
-      setSelectedGenre(genre);
+      // setSelectedGenre(genre);
       // onSelectedGenres(selectedFilterGenres);
     }
   };
 
   const UpdateSelectedGenres = () => {
     onSelectedGenres(selectedFilterGenres);
-    console.log("selectedFilterGenres 3: " + selectedFilterGenres);
   };
-  console.log("selectedFilterGenres: " + selectedFilterGenres);
-  console.log("selectedGenre: " + selectedGenre);
-  console.log(
-    "---------------------------------------------------------------------"
-  );
+  // console.log("selectedFilterGenres: " + selectedFilterGenres);
+  // console.log("selectedGenre: " + selectedGenre);
+  // console.log(
+  //   "---------------------------------------------------------------------"
+  // );
 
   // const myClass = (genre: string) => {
   //   selectedFilterGenres.forEach((e) => {

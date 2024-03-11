@@ -27,6 +27,8 @@ const ThemeSwitch = () => {
     if (e.target.checked) setDarkMode();
     else setLightMode();
   };
+  // console.log("------- You called ThemeSwitch Component -------");
+
   return (
     <>
       {/* <div className="form-check form-switch mx-2 position-absolute bottom-0 start-0 mb-2"> */}

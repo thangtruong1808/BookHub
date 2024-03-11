@@ -1,19 +1,27 @@
+
 :root{
-    --body_background: white;
-    --body_color: black;
-    --link_color:navy;
+    --bs-body-bg: #f8f9fa;
+    --bs-body-color: #212529;
+    --bs-emphasis-color: #000;
 }
 
 [data-theme="dark"]{
-    --body_background: #282c34;
+    /* --body_background: blue;
     --body_color: white;
-    --link_color: cyan;
+    --link_color: cyan; */
+
+    --bs-body-bg: #212529;    
+    --bs-body-color: #adb5bd;
+    --bs-emphasis-color: #000;
 }
 
+
 .myApp{
-    background-color: var(--body_background);
+    background-color: var(--bs-body-bg);
     color: var(--body_color);
 }
+
+
 /* .for_light_theme{
     --primary-color:#302ae6;
     --secondary-color:#536390;

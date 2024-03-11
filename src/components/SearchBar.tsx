@@ -6,6 +6,7 @@ interface Props {
 }
 const SearchBar = ({ onSearch }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
+  // console.log("------- You called SearchBar Component -------");
 
   return (
     <form
