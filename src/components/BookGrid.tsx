@@ -27,7 +27,7 @@ const BookGrid = ({ books, isLoading }: Props) => {
       )}
       {!isLoading && books.length === 0 ? (
         <div
-          className="text-uppercase fs-6 fw-bold text-danger mt-5 w-50"
+          className="text-uppercase fs-6 fw-bold mt-5 w-50"
           // style={{ width: "550px" }}
         >
           Sorry, No books found, Please update filters.

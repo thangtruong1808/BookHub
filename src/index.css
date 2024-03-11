@@ -1,25 +1,33 @@
 
+
 :root{
     --bs-body-bg: #f8f9fa;
     --bs-body-color: #212529;
-    --bs-emphasis-color: #000;
+
+
+
 }
 
 [data-theme="dark"]{
-    /* --body_background: blue;
-    --body_color: white;
-    --link_color: cyan; */
-
     --bs-body-bg: #212529;    
-    --bs-body-color: #adb5bd;
-    --bs-emphasis-color: #000;
+    --bs-body-color:#adb5bd;
+
+.btn-primary{
+    --bs-btn-bg: #ffc107;
+    --bs-btn-color: #212529;
+    --bs-btn-hover-bg: #20c997;
+}
+
+.accordion-button.collapsed {
+    background: #fff;
+}
 }
 
 
-.myApp{
+/* .myApp{
     background-color: var(--bs-body-bg);
-    color: var(--body_color);
-}
+    color: var(--bs-body-color);
+} */
 
 
 /* .for_light_theme{

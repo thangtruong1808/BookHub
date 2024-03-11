@@ -86,12 +86,12 @@ const AsideBar = ({
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              <span className="fw-bold fs-5 text-center text-dark">Genres</span>
+              <span className="fw-bold fs-5 text-center">Genres</span>
             </button>
           </h2>
           <div
             id="collapseOne"
-            className="myApp accordion-collapse collapse show"
+            className="accordion-collapse collapse show"
             aria-labelledby="headingOne"
             data-bs-parent="#accordionExample"
           >

@@ -22,7 +22,7 @@ const SearchBar = ({ onSearch }: Props) => {
           // onChange={HandleOnChange}
           id="searchTextInput"
           ref={ref}
-          className="form-control"
+          className="form-control bg-light"
           type="search"
           placeholder="Search by title . . . "
         />

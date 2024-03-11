@@ -90,8 +90,9 @@ const BookDetail = () => {
             </div>
           </div>
           <button
-            className="btn btn-dark btn-sm mt-3"
+            className="btn btn-primary mt-3"
             onClick={() => navigate("/")}
+            style={{ width: "15rem" }}
           >
             Back
           </button>

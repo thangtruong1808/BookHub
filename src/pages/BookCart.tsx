@@ -24,12 +24,12 @@ const BookCart = () => {
         onSearch={HandleOnSearchInPut}
         onSelectedGenres={HandleOnSelectedGenres}
       />
-      <div className="d-flex justify-content-center container mt-5 text-danger  text-center">
+      <div className="d-flex justify-content-center container mt-5  text-center">
         {favorites.length === 0 ? (
           <div className="flex-column mb-5 fw-bold fs-2">
             <span>Your Cart is empty</span>
             <button
-              className="btn btn-dark mt-5 d-flex justify-content-center"
+              className="btn btn-primary mt-5 d-flex justify-content-center"
               style={{ width: "280px" }}
               onClick={() => navigate("/")}
             >
@@ -38,9 +38,7 @@ const BookCart = () => {
           </div>
         ) : (
           <div className="container">
-            <h1 className="text-center fw-bold fs-2 mt-5 text-danger ">
-              Your Cart
-            </h1>
+            <h1 className="text-center fw-bold fs-2 mt-5  ">Your Cart</h1>
             <div className="container mt-3">
               <table className="table table-bordered ">
                 <thead className="table-dark text-center">
@@ -93,13 +91,10 @@ const BookCart = () => {
                 </tbody>
                 <tfoot>
                   <tr>
-                    <td colSpan="2" className="fw-bold fs-4">
+                    <td colSpan={2} className="fw-bold fs-4">
                       Total:
                     </td>
-                    <td
-                      colSpan="7"
-                      className="text-danger text-start fw-bold fs-4"
-                    >
+                    <td colSpan={7} className=" text-start fw-bold fs-4">
                       <span>{favorites.length} items</span>
                     </td>
                   </tr>
