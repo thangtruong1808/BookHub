@@ -28,7 +28,7 @@ const SearchBar = ({ onSearch }: Props) => {
         />
 
         <button
-          className="btn btn-primary"
+          className="btn btn-card"
           type="submit"
           id="btn_search"
           style={{ width: "70px" }}

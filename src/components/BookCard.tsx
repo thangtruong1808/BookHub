@@ -38,7 +38,7 @@ const BookCard = ({ book }: BookCard) => {
           <p className="fw-bold text-center m-1">{book.title}</p>
           <p className="mx-2 m-1">
             Author:
-            <span className="fw-bold badge rounded-pill text-bg-info mx-2">
+            <span className="fw-bold badge rounded-pill author-bg-info mx-2">
               {book.authors}
             </span>
           </p>
@@ -58,7 +58,7 @@ const BookCard = ({ book }: BookCard) => {
               </button>
             ) : (
               <button
-                className="p-2 fw-bold rounded-bottom-4 position-absolute bottom-0 w-100 btn btn-primary btn-sm"
+                className="p-2 fw-bold rounded-bottom-4 position-absolute bottom-0 w-100 btn btn-card"
                 onClick={() => AddToFavorites(book)}
               >
                 Add to Cart

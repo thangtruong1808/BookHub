@@ -3,10 +3,37 @@
 @import 'bootstrap/scss/mixins';
 
 :root {
-    --bs-body-bg: #f8f9fa;
+    // --bs-body-bg: #f8f9fa;
+    --bs-body-bg: #{$gray-100};
     --bs-body-color: #212529;
     /* --bs-body-color: yellow; */
+    --bs-btn-bg: #{$blue-400};
+    --bs-btn-border-color: #{$blue-400};
+    
+    // --bs-bg-info-bg: #{$teal-100};
+    
+    .author-bg-info {
+    // background-color: var(--bs-bg-info-bg);
+        // --bs-bg-info-bg: #{$teal-500};
+        background-color: #{$gray-300};
+        color: black;
+    }
 
+    // .btn-primary {
+    //         --bs-btn-bg: #{$gray-500};
+    //         --bs-btn-color: #212529;
+    //         // --bs-btn-hover-bg: #20c997;
+    //         --bs-btn-hover-bg: #{$gray-500};
+    //         --bs-btn-border-color: #{$gray-500};
+    //     }
+
+    .btn-card {
+        --bs-btn-bg: #{$gray-500};
+        --bs-btn-color: #212529;
+        // --bs-btn-hover-bg: #20c997;
+        --bs-btn-hover-bg: #{$gray-500};
+        --bs-btn-border-color: #{$gray-500};
+    }
 }
 
 [data-theme="dark"] {
@@ -14,10 +41,11 @@
     --bs-body-bg: #{$gray-800};
     --bs-body-color: #adb5bd;
 
-    .btn-primary {
-        --bs-btn-bg: #ffc107;       
+    .btn-card {
+        --bs-btn-bg: #{$yellow-600};       
         --bs-btn-color: #212529;
-        --bs-btn-hover-bg: #20c997;
+        // --bs-btn-hover-bg: #20c997;
+        --bs-btn-hover-bg: #{$yellow-400};
         --bs-btn-border-color: #ffc107;
     }
 
@@ -25,3 +53,8 @@
         background: #fff;
     }
 }
+
+// .btn-card {
+//     background: $blue-400;
+//     border-color: $blue-400;
+// }
