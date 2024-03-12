@@ -1,0 +1,27 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+
+:root {
+    --bs-body-bg: #f8f9fa;
+    --bs-body-color: #212529;
+    /* --bs-body-color: yellow; */
+
+}
+
+[data-theme="dark"] {
+    // --bs-body-bg: #212529;
+    --bs-body-bg: #{$gray-800};
+    --bs-body-color: #adb5bd;
+
+    .btn-primary {
+        --bs-btn-bg: #ffc107;       
+        --bs-btn-color: #212529;
+        --bs-btn-hover-bg: #20c997;
+        --bs-btn-border-color: #ffc107;
+    }
+
+    .accordion-button.collapsed {
+        background: #fff;
+    }
+}

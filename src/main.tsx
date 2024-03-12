@@ -19,6 +19,8 @@ import "bootstrap/dist/css/bootstrap.css";
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
+import "./custom.scss";
+
 import Home from "./pages/Home.tsx";
 import ErrorPage from "./pages/ErrorPage.tsx";
 import BookDetail from "./pages/BookDetail.tsx";

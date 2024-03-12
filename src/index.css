@@ -1,14 +1,6 @@
 
 
-:root{
-    --bs-body-bg: #f8f9fa;
-    --bs-body-color: #212529;
-
-
-
-}
-
-[data-theme="dark"]{
+/* [data-theme="dark"]{
     --bs-body-bg: #212529;    
     --bs-body-color:#adb5bd;
 
@@ -21,7 +13,7 @@
 .accordion-button.collapsed {
     background: #fff;
 }
-}
+} */
 
 
 /* .myApp{

@@ -86,7 +86,9 @@ const AsideBar = ({
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              <span className="fw-bold fs-5 text-center">Genres</span>
+              <span className="fw-bold fs-5 text-center btn-primary">
+                Genres
+              </span>
             </button>
           </h2>
           <div
